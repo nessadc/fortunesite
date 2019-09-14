@@ -1,0 +1,13 @@
+<!-- index.html -->
+
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="jumbotron">
+    <h1>Welcome to the Fortune-of-the-Day Site!</h1>
+    <p>This will show you your future fortune!</p>
+    <body>Your fortune is: {{fortune}}</body>
+    <br><br>
+    <a href="about">About this Page</a>    
+</div>
+{% endblock %}
