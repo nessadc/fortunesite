@@ -1,5 +1,3 @@
-<!-- create_fortune.html -->
-
 {% extends "layout.html" %}
 {% block title %}New Fortune{% endblock %}
 {% block body %}
@@ -9,7 +7,7 @@
         {{ form.hidden_tag() }}
         <p>
             {{ form.content.label }}<br>
-            {{ form.content(size=32)}}
+            {{ form.content() }}
         </p>
         <p>{{ form.submit() }}</p>
     </form>
