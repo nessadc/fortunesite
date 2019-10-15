@@ -1,6 +1,7 @@
 from flask import render_template, flash, redirect
 from fortunesite import app
 from fortunesite.forms import LoginForm, SubmitForm
+from fortunesite.models import User, Fortune
 
 fortune = "You will live a long and healthy life"
 
@@ -28,4 +29,6 @@ def login():
 @app.route('/submit', methods=['GET', 'POST'])
 def submit():
     form = SubmitForm()
+    if form.validate_on_submit():
+        flash('New fortune submitted!')
     return render_template('create_fortune.html', title='New Fortune', form=form)
