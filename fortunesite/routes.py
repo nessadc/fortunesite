@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, url_for
 from fortunesite import app
 from fortunesite.forms import LoginForm, SubmitForm
 from fortunesite.models import User
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user, login_required
 
 
 fortune = "You will live a long and healthy life"
@@ -41,6 +41,7 @@ def logout():
 
 
 @app.route('/submit', methods=['GET', 'POST'])
+@login_required
 def submit():
     form = SubmitForm()
     if form.validate_on_submit():
