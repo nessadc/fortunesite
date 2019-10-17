@@ -36,10 +36,14 @@
                         </li>
                         <li class="nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
+                            Functions
                           </a>
                           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% if current_user.is_anonymous %}
                             <a class="dropdown-item" href="{{ url_for('login') }}">Log In</a>
+                            {% else %}
+                            <a class="dropdown-item" href="{{ url_for('logout') }}">Log Out</a>
+                            {% endif %}
                             <a class="dropdown-item" href="{{ url_for('submit') }}">Submit Fortune</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Something else here</a>
