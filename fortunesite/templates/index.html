@@ -2,6 +2,7 @@
 {% block title %}Home{% endblock %}
 {% block body %}
 <div class="jumbotron">
+    <h1>Hi, {{ current_user.username }}!</h1>
     <h1>Welcome to the Fortune-of-the-Day Site!</h1>
     <p>This will show you your future fortune!</p>
     <body>Your fortune is: {{fortune}}</body>
