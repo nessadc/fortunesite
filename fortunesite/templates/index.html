@@ -2,10 +2,14 @@
 {% block title %}Home{% endblock %}
 {% block body %}
 <div class="jumbotron">
-    <h1>Hi, {{ current_user.username }}!</h1>
+    {% if current_user.is_authenticated %}
+        <h1>Hi, {{ current_user.username }}!</h1>
+    {% else %}
+        <h1>Hi! </h1>
+    {% endif %}
     <h1>Welcome to the Fortune-of-the-Day Site!</h1>
     <p>This will show you your future fortune!</p>
-    <body>Your fortune is: {{fortune}}</body>
+    <body>Your fortune is: <b>{{fortune}}</b></body>
     <br><br>
     <a href="about">About this Page</a>    
 </div>

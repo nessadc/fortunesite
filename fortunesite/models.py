@@ -3,6 +3,7 @@ from fortunesite import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from fortunesite import login
+from hashlib import md5
 
 
 class User(UserMixin, db.Model):
@@ -12,6 +13,8 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(120), index=True, unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
     fortunes = db.relationship('Fortune', backref='author', lazy=True)
+    about_me = db.Column(db.String(140))
+    last_seen = db.Column(db.DateTime, default=datetime.utcnow)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -21,6 +24,11 @@ class User(UserMixin, db.Model):
 
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+    def avatar(self, size):
+        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
+        return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(
+            digest, size)
 
 
 class Fortune(db.Model):
