@@ -7,7 +7,10 @@
         {{ form.hidden_tag() }}
         <p>
             {{ form.content.label }}<br>
-            {{ form.content() }}
+            {{ form.content(cols=32, rows=4) }}<br>
+            {% for error in form.content.errors %}
+            <span style="color:red;">{{ error }}</span>
+            {% endfor %}
         </p>
         <p>{{ form.submit() }}</p>
     </form>

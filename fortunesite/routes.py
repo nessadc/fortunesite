@@ -1,13 +1,14 @@
 from flask import render_template, flash, redirect, url_for, request
 from fortunesite import app, db
-from fortunesite.forms import LoginForm, SubmitForm, RegistrationForm, EditProfileForm
-from fortunesite.models import User
+from fortunesite.forms import LoginForm, RegistrationForm
+from fortunesite.forms import EditProfileForm, FortuneForm
+from fortunesite.models import User, Fortune
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from datetime import datetime
+from random import choice
 
-
-fortune = "You will live a long and healthy life"
+# fortune = "You will live a long and healthy life"
 
 
 @app.before_request
@@ -20,6 +21,7 @@ def before_request():
 @app.route('/index')
 @app.route('/')
 def index():
+    fortune = choice(Fortune.query.all())
     return render_template("index.html", fortune=fortune)
 
 
@@ -70,9 +72,13 @@ def logout():
 @app.route('/submit', methods=['GET', 'POST'])
 @login_required
 def submit():
-    form = SubmitForm()
+    form = FortuneForm()
     if form.validate_on_submit():
+        fortune = Fortune(content=form.content.data, author=current_user)
+        db.session.add(fortune)
+        db.session.commit()
         flash('New fortune submitted!')
+        return redirect(url_for('submit'))
     return render_template('create_fortune.html', title='New Fortune',
                            form=form)
 

@@ -7,9 +7,11 @@
     {% else %}
         <h1>Hi! </h1>
     {% endif %}
-    <h1>Welcome to the Fortune-of-the-Day Site!</h1>
-    <p>This will show you your future fortune!</p>
-    <body>Your fortune is: <b>{{fortune}}</b></body>
+    <h2>Welcome to the Fortune-of-the-Day Site!</h2>
+    <p>This will show you a fortune!</p>
+    <body><b>{{ fortune.content }}</b><br>
+    <i>Submitted by {{ fortune.author.username }}</i>
+    </body>
     <br><br>
     <a href="about">About this Page</a>    
 </div>

@@ -11,11 +11,6 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Log In')
 
 
-class SubmitForm(FlaskForm):
-    content = TextAreaField('Content', validators=[DataRequired()])
-    submit = SubmitField('Submit')
-
-
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -49,3 +44,9 @@ class EditProfileForm(FlaskForm):
             user = User.query.filter_by(username=self.username.data).first()
             if user is not None:
                 raise ValidationError('Please use a different username.')
+
+
+class FortuneForm(FlaskForm):
+    content = TextAreaField('Write a fortune', validators=[
+        DataRequired(), Length(min=1, max=380)])
+    submit = SubmitField('Submit')
