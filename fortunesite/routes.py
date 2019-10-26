@@ -6,9 +6,7 @@ from fortunesite.models import User, Fortune
 from flask_login import current_user, login_user, logout_user, login_required
 from werkzeug.urls import url_parse
 from datetime import datetime
-from random import choice
-
-# fortune = "You will live a long and healthy life"
+import random
 
 
 @app.before_request
@@ -21,7 +19,7 @@ def before_request():
 @app.route('/index')
 @app.route('/')
 def index():
-    fortune = choice(Fortune.query.all())
+    fortune = random.choice(Fortune.query.all())
     return render_template("index.html", fortune=fortune)
 
 

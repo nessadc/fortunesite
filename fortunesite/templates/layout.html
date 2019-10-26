@@ -34,26 +34,27 @@
                         <li class="nav-item">
                           <a class="nav-link" href="{{ url_for('about') }}">About</a>
                         </li>
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Functions
-                          </a>
-                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            {% if current_user.is_anonymous %}
-                            <a class="dropdown-item" href="{{ url_for('login') }}">Log In</a>
-                            {% else %}
-                            <a class="dropdown-item" href="{{ url_for('logout') }}">Log Out</a>
-                            {% endif %}
-                            <a class="dropdown-item" href="{{ url_for('submit') }}">Submit Fortune</a>
-                            {% if current_user.is_authenticated %}
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ url_for('user', username=current_user.username) }}">Profile</a>
-                            {% else %}
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ url_for('register') }}">Register</a>
-                            {% endif %}
-                          </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('submit') }}">Submit Fortune</a>
                         </li>
+                        {% if current_user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('user', username=current_user.username) }}">Profile</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('register') }}">Register</a>
+                        </li>
+                        {% endif %}
+                        {% if current_user.is_anonymous %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('login') }}">Log In</a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+                        </li>
+                        {% endif %}
                       </ul>
                       <form class="form-inline my-2 my-lg-0">
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
