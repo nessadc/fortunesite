@@ -5,7 +5,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
-
+from flask_mail import Mail
 
 sql_uri = '/Users/nessad/Programming/fortunesite/fortunesite/site.db'
 
@@ -19,7 +19,7 @@ app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT') or 25)
 app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS') is not None
 app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
-app.config['ADMINS'] = ['admin_email@example.com']
+app.config['ADMINS'] = ['fortunesite@nessadc.com']
 if not app.debug:
     if app.config['MAIL_SERVER']:
         auth = None
@@ -47,6 +47,7 @@ if not app.debug:
 
     app.logger.setLevel(logging.INFO)
     app.logger.info('FortuneSite startup')
+mail = Mail(app)
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
