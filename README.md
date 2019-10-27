@@ -1,2 +1,10 @@
 
-**This is a great site that I will be building**
+## This is a basic CRUD app that utilizes technolgoes that I am interested in learning:
+
+* Flask
+* PostgreSQL
+* Bootstrap
+* SQLAlchemy
+* AWS for hosting
+
+Huge thanks to Miguel Grinberg: https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world
