@@ -1,18 +1,18 @@
 {% extends "layout.html" %}
 {% block title %}Home{% endblock %}
-{% block body %}
-<div class="jumbotron">
+
+{% block app_content %}
     {% if current_user.is_authenticated %}
         <h1>Hi, {{ current_user.username }}!</h1>
     {% else %}
         <h1>Hi! </h1>
     {% endif %}
-    <h2>Welcome to the Fortune-of-the-Day Site!</h2>
+    <h2>Welcome to the Fortune Site!</h2>
     <p>This will show you a fortune!</p>
+    <div class='well'>
     <body><b>{{ fortune.content }}</b><br>
     <i>Submitted by {{ fortune.author.username }}</i>
+    </div>
     </body>
-    <br><br>
     <a href="about">About this Page</a>    
-</div>
 {% endblock %}

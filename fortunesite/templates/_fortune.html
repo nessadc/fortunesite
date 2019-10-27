@@ -1,6 +1,6 @@
-<table>
-    <tr valign="top">
-        <td><img src="{{ fortune.author.avatar(36) }}"></td>
+<table class="table table-hover">
+    <tr>
+        <td width="70px"><img src="{{ fortune.author.avatar(36) }}"></td>
         {% if user == current_user %}
         <td>You have submitted <b>{{ fortune.content }}</b></td>
         {% else %}
