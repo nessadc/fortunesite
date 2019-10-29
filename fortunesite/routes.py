@@ -21,7 +21,10 @@ def before_request():
 @app.route('/index')
 @app.route('/')
 def index():
-    fortune = random.choice(Fortune.query.all())
+    try:
+        fortune = random.choice(Fortune.query.all())
+    except IndexError:
+        fortune = None
     return render_template("index.html", fortune=fortune)
 
 

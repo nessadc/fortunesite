@@ -10,8 +10,12 @@
     <h2>Welcome to the Fortune Site!</h2>
     <p>This will show you a fortune!</p>
     <div class='well'>
-    <body><b>{{ fortune.content }}</b><br>
-    <i>Submitted by {{ fortune.author.username }}</i>
+    {% if fortune %}
+        <body><b>{{ fortune.content }}</b><br>
+        <i>Submitted by {{ fortune.author.username }}</i>
+    {% else %}
+        <body><b>No Fortunes have been submitted yet</b><br>
+    {% endif %}
     </div>
     </body>
     <a href="about">About this Page</a>    
