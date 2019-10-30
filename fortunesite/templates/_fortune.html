@@ -2,9 +2,9 @@
     <tr>
         <td width="70px"><img src="{{ fortune.author.avatar(36) }}"></td>
         {% if user == current_user %}
-        <td>You have submitted <b>{{ fortune.content }}</b></td>
+        <td>You submitted <b>{{ fortune.content }}</b> on {{ moment(fortune.timestamp).format('LLL') }}</td>
         {% else %}
-        <td>{{ fortune.author.username }} has submitted <b>{{ fortune.content }}</b></td>
+        <td>{{ fortune.author.username }} submitted <b>{{ fortune.content }}</b> on {{ moment(fortune.timestamp).format('LLL') }}</td>
         {% endif %}
     </tr>
 </table>
