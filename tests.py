@@ -1,17 +1,21 @@
 from datetime import datetime, timedelta
 import unittest
-from fortunesite import app, db
+from fortunesite import create_app, db
 from fortunesite.models import User, Fortune
+from config import Config
 
 
 class UserModelCase(unittest.TestCase):
     def setUp(self):
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
+        self.app = create_app(TestConfig)
+        self.app_context = self.app.app_context()
+        self.app_context.push()
         db.create_all()
 
     def tearDown(self):
         db.session.remove()
         db.drop_all()
+        self.app_context.pop()
 
     def test_password_hashing(self):
         u = User(username='susan')
@@ -59,13 +63,13 @@ class UserModelCase(unittest.TestCase):
         # create four posts
         now = datetime.utcnow()
         p1 = Fortune(content="post from john", author=u1,
-                  timestamp=now + timedelta(seconds=1))
+                     timestamp=now + timedelta(seconds=1))
         p2 = Fortune(content="post from susan", author=u2,
-                  timestamp=now + timedelta(seconds=4))
+                     timestamp=now + timedelta(seconds=4))
         p3 = Fortune(content="post from mary", author=u3,
-                  timestamp=now + timedelta(seconds=3))
+                     timestamp=now + timedelta(seconds=3))
         p4 = Fortune(content="post from david", author=u4,
-                  timestamp=now + timedelta(seconds=2))
+                     timestamp=now + timedelta(seconds=2))
         db.session.add_all([p1, p2, p3, p4])
         db.session.commit()
 
@@ -85,6 +89,11 @@ class UserModelCase(unittest.TestCase):
         self.assertEqual(f2, [p2, p3])
         self.assertEqual(f3, [p3, p4])
         self.assertEqual(f4, [p4])
+
+
+class TestConfig(Config):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite://'
 
 
 if __name__ == '__main__':

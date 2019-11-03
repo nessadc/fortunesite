@@ -1,5 +1,7 @@
-from fortunesite import app, db
+from fortunesite import create_app, db
 from fortunesite.models import User, Post
+
+app = create_app()
 
 
 @app.shell_context_processor
