@@ -1,5 +1,5 @@
 
-## This is a basic CRUD app that utilizes technolgoes that I am interested in learning:
+## This is a basic CRUD app that utilizes technologies that I am interested in learning:
 
 * Flask
 * PostgreSQL
