@@ -3,6 +3,7 @@
         <td width="70px"><img src="{{ fortune.author.avatar(36) }}"></td>
         {% if user == current_user %}
         <td>You submitted <b>{{ fortune.content }}</b> on {{ moment(fortune.timestamp).format('LLL') }}</td>
+        <td><a href="{{ url_for('main.delete', fortune_id=fortune.id) }}">Delete this</a></td>
         {% else %}
         <td>{{ fortune.author.username }} submitted <b>{{ fortune.content }}</b> on {{ moment(fortune.timestamp).format('LLL') }}</td>
         {% endif %}

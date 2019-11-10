@@ -99,3 +99,11 @@ def unfollow(username):
     db.session.commit()
     flash('You are not following {}.'.format(username))
     return redirect(url_for('main.user', username=username))
+
+
+@bp.route('/delete/<fortune_id>')
+@login_required
+def delete(fortune_id):
+    Fortune.query.filter_by(id=fortune_id).delete()
+    db.session.commit()
+    return redirect(url_for('main.user', username=current_user.username))
