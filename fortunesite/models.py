@@ -78,6 +78,7 @@ class User(UserMixin, db.Model):
 
 
 class Fortune(db.Model):
+    __searchable__ = ['content']
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(140))
     timestamp = db.Column(db.DateTime, index=True,
