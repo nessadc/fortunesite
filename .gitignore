@@ -128,7 +128,8 @@ dmypy.json
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-
+.ebextensions/*
+.ebignore
 /logs
 app.db
 boot.sh

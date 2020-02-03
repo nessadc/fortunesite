@@ -1,7 +1,8 @@
 from fortunesite import create_app, db
 from fortunesite.models import User, Fortune
 
-app = create_app()
+application = create_app()
+app = application
 
 
 @app.shell_context_processor

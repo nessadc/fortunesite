@@ -23,7 +23,8 @@ moment = Moment()
 
 
 def create_app(config_class=Config):
-    app = Flask(__name__)
+    application = Flask(__name__)
+    app = application
     app.config.from_object(config_class)
 
     db.init_app(app)

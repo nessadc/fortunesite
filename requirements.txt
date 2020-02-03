@@ -19,6 +19,8 @@ docopt==0.6.2
 docutils==0.15.2
 dominate==2.4.0
 elasticsearch==7.1.0
+entrypoints==0.3
+flake8==3.7.9
 Flask==1.1.1
 Flask-Bootstrap==3.3.7.1
 Flask-Login==0.4.1
@@ -40,6 +42,9 @@ MarkupSafe==1.1.1
 mccabe==0.6.1
 pathspec==0.5.9
 pipdeptree==0.13.2
+psycopg2-binary==2.8.4
+pycodestyle==2.5.0
+pyflakes==2.1.1
 PyJWT==1.7.1
 pylint==2.4.2
 python-dateutil==2.8.0
