@@ -17,6 +17,4 @@ class Config(object):
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['nessdev575@gmail.com']
 
-    ELASTICSEARCH_URL = os.environ.get('ELASTICSEARCH_URL')
-
-    
+    ELASTICSEARCH_URL = None  # os.environ.get('ELASTICSEARCH_URL')
