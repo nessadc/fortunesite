@@ -125,7 +125,7 @@ dmypy.json
 .pyre/
 .vscode
 # Elastic Beanstalk Files
-
+.elasticbeanstalk/*
 /logs
 app.db
 boot.sh

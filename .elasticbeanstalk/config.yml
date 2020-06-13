@@ -1,9 +1,9 @@
 branch-defaults:
   ebdeploy:
-    environment: fortunesite-v1
+    environment: null
     group_suffix: null
 global:
-  application_name: flask-tutorial
+  application_name: fortunesite
   branch: null
   default_ec2_keyname: null
   default_platform: python-3.6
